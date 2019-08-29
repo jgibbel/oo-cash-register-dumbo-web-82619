@@ -3,7 +3,7 @@ class CashRegister
     @total = 0 
     @discount = discount
     @items = []
-    @cart  = {}
+    @cart  = []
   end 
   
   def discount 
@@ -16,7 +16,7 @@ class CashRegister
     quantity.times do @items << name
     end 
     @total += price*quantity
-    @cart[name] = price*quantity 
+    @cart << price*quantity 
   end
   
   def apply_discount
@@ -32,7 +32,8 @@ class CashRegister
   end 
     
   def void_last_transaction 
-    @cart.last 
+    @total -= @cart.last 
+    @items.pop
     
   
   
