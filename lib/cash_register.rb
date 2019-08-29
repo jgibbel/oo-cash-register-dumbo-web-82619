@@ -3,6 +3,7 @@ class CashRegister
     @total = 0 
     @discount = discount
     @items = []
+    @cart  = {}
   end 
   
   def discount 
@@ -15,6 +16,7 @@ class CashRegister
     quantity.times do @items << name
     end 
     @total += price*quantity
+    @cart[name] = price*quantity 
   end
   
   def apply_discount
